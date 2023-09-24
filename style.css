@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     background: #080808;
     color: #fff;
@@ -16,7 +20,7 @@ body{
     width: auto;
     background-image: url(images/portrait.png);
     background-size: cover;
-    background-position:center;
+    background-position: 25% 75%;
     
 }
 
@@ -33,6 +37,7 @@ nav{
 
 .logo{
     width:140px;
+    margin: 0 -20px;
 }
 
 nav ul li{
@@ -341,4 +346,104 @@ form .btn2{
     font-size: 18px;
     margin-top: 20px;
     cursor: pointer;
+}
+
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626 ;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+/* --------css for small screen ------------- */
+nav .fa-solid{
+    display: none;
+}
+
+@media only screen and (max-width:600px){
+    #header{
+        background-image: url(images/phone-background.png);
+        background-position: 50% 75%;
+
+        min-height: 800px;
+    }
+    .header-text{
+        margin-top: 165%;
+        font-size: 16px;
+        text-shadow: 2px 2px 10px #262626;
+
+    }
+    .header-text h1 span{
+        text-shadow: none;
+    }
+    
+    .header-text h1{
+        font-size: 30px;
+    }
+
+    nav .fa-solid{
+        display: block;
+        font-size: 25px;
+    }
+
+    nav ul{
+        background:#cc0081;
+        position: fixed;
+        top: 0;
+        right: -100px;
+        width: 100px;
+        height: 200vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+
+    nav ul li{
+        display: block;
+        margin: 25px;
+    }
+
+    nav ul .fa-solid{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+
+    .subtitle{
+        font-size: 40px;
+    }
+
+    .about-col-1,.about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+
+    .about-col-2{
+        font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
+
+    .copyright{
+        font-size: 14px;
+    }
+
+}
+
+#msg{
+    margin-top: -40px;
+    display: block;
+    font-weight: 500;
+
 }

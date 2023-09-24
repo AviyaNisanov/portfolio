@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://kit.fontawesome.com/818b738f03.js"
       crossorigin="anonymous"></script>
+      <link
+      rel="icon"
+      type="image/png"
+      href="images/Favicon.png"
+    />
   </head>
 
   <body>
@@ -16,13 +21,16 @@
       <div class="container">
         <nav>
           <img src="images/logo.png" class="logo" />
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
+          <ul id="sideMenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i class="fa-solid fa-x" onclick="closeMenu()"></i>
           </ul>
+          <i class="fa-solid fa-bars" onclick="openMenu()"></i>
+          
         </nav>
         <div class="header-text">
           <p>Software Engineer</p>
@@ -210,7 +218,7 @@
 
 
           <div class="contact-right">
-            <form>
+            <form name="submit-to-google-sheet">
               <input type="text" name="Name"
                 placeholder="Your Name" required>
               <input type="email" name="Email"
@@ -219,8 +227,12 @@
                 placeholder="Your Message"></textarea>
               <button type="submit" class="btn btn2">Submit</button>
             </form>
+            <span id="msg"></span>
           </div>
         </div>
+      </div>
+      <div class="copyright">
+        <p>Copyright &copy Aviya.</p>
       </div>
     </div>
     <script>
@@ -236,6 +248,34 @@
         event.currentTarget.classList.add("active-link");
         document.getElementById(tabname).classList.add("active-tab");
       }
+    </script>
+
+    <script>
+      var sideMenu=document.getElementById("sideMenu");
+      
+      function openMenu(){
+        sideMenu.style.right = "0";
+      }
+      function closeMenu(){
+        sideMenu.style.right = "-200px";
+      }
+    </script>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzE72A6ov2aJJjs0bTJY0nsV3rW57VvZeM_iUGQ6D7KbQyCrqIjHEO88v3H1d4x6eo1/exec'
+      const form = document.forms['submit-to-google-sheet']
+      const msg= document.getElementById("msg");
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            msg.innerHTML = "Message sent succcessfully!"
+            setTimeout(function(){
+              msg.innerHTML = ""
+            },5000)
+            form.reset()
+          })
+          .catch(error => console.error('Error!', error.message))
+      })
     </script>
   </body>
 
